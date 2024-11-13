@@ -1,0 +1,17 @@
+const HBInit = require('./haxball.js'); // Carrega o arquivo da API
+
+const room = HBInit({
+    roomName: "Minha Sala de HaxBall",
+    maxPlayers: 10,
+    public: true,
+    noPlayer: true,  // Para não iniciar a partida automaticamente
+    disablePlayerChat: false,
+});
+
+room.onPlayerJoin = (player) => {
+    room.sendAnnouncement(`Bem-vindo, ${player.name}!`, player.id);
+};
+
+room.onGameStart = () => {
+    console.log("O jogo começou!");
+};
